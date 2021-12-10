@@ -6,7 +6,7 @@ const ContactSchema = new Schema({
     email: { type: String, required: true },
     phone: { type: String, required: true },
     rol: { type: String, required: true},
-    client: {type: String, required: true}
+    client: {type: String, required: false}
 })
 
 // clientes es el nombre de la coleccion donde se guardaran los datos

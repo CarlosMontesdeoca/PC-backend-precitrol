@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req,res) => {
     
     const { name, email, phone, rol, client } = req.body;
-    const dataContact = new Client({ name, email, phone, rol, client })
+    const dataContact = new Contact({ name, email, phone, rol, client })
 
     await dataContact.save();
 

@@ -5,6 +5,7 @@ const ContactSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
+    business: {type: String, require: true },
     rol: { type: String, required: true},
     client: {type: String, required: false}
 })

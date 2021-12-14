@@ -23,8 +23,8 @@ router.get('/:id', async (req, res) => {
 // metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     
-    const { name, address, ruc, type, city, phone } = req.body;
-    const dataClient = new Client({ name, address, ruc, type, city, phone, contacts })
+    const { name, email, address, ruc, type, city, phone } = req.body;
+    const dataClient = new Client({ name, email, address, ruc, type, city, phone, contacts })
 
     await dataClient.save();
 
@@ -35,8 +35,8 @@ router.post('/', async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', async (req, res) => {
 
-    const { name, address, ruc, type, city, phone } = req.body;
-    const newClient  = { name, address, ruc, type, city, phone, contacts };
+    const { name, email, address, ruc, type, city, phone } = req.body;
+    const newClient  = { name, email, address, ruc, type, city, phone, contacts };
     //obtengo el id del cliente al que estoy buscando 
     console.log(req.params.id); 
 

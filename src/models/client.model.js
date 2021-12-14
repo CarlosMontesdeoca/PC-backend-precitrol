@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 
 const ClientSchema = new Schema({
     name: { type: String, required: true },
+    email: { type:String, required: true },
     address: { type: String, required: true },
     ruc: { type: String, required: true },
     type: { type:String, required: true },

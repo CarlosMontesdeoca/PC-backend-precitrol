@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 //settings
-app.set( 'port', process.env.PORT || 3002 );
+app.set( 'port', process.env.PORT || 3000 );
 
 //middlewares
 app.use(morgan('dev'));
@@ -20,6 +20,12 @@ app.use(express.json());
 app.use('/api/secret/users', require('./routes/user.routes'));
 app.use('/api/clients', require('./routes/client.routes'));
 app.use('/api/contacts', require('./routes/contact.routes'));
+
+app.use('/token/login', (req, res) => {
+    res.send({
+      token: 'test123'
+    });
+});
 
 // static files
 app.use(express.static(path.join(__dirname + '/public')));

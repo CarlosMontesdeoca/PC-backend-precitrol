@@ -42,8 +42,8 @@ router.post('/', async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', async (req, res) => {
     try {
-        const { name, email, address, ruc, typ, city, phone } = req.body;
-        const newClient  = { name, email, address, ruc, typ, city, phone };
+        const { name, email, address, ruc, typ, city, phone, contacts } = req.body;
+        const newClient  = { name, email, address, ruc, typ, city, phone, contacts };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
@@ -64,5 +64,6 @@ router.delete('/:id', async (req, res) => {
         return error
     }
 })
+
 
 module.exports = router;

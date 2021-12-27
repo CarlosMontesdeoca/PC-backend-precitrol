@@ -28,8 +28,8 @@ router.get('/:id', async (req, res) => {
 // metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     try {
-        const { name, email, address, ruc, typ, city, phone } = req.body;
-        const dataClient = new Client({ name, email, address, ruc, typ, city, phone })
+        const { name, email, address, ruc, typ, plant, city, phone } = req.body;
+        const dataClient = new Client({ name, email, address, ruc, typ, plant, city, phone })
 
         await dataClient.save();
 
@@ -42,8 +42,23 @@ router.post('/', async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', async (req, res) => {
     try {
-        const { name, email, address, ruc, typ, city, phone, contacts } = req.body;
-        const newClient  = { name, email, address, ruc, typ, city, phone, contacts };
+        const { name, email, address, ruc, typ, plant, city, phone, contacts } = req.body;
+        const newClient  = { name, email, address, ruc, typ, plant, city, phone, contacts };
+        //obtengo el id del cliente al que estoy buscando 
+        console.log(req.params.id); 
+
+        await Client.findByIdAndUpdate(req.params.id, newClient);
+
+        res.json({ status: 'cliente actualizado'});
+    } catch (error) {
+        return error
+    }
+})
+
+router.put('/:id/contacts', async (req, res) => {
+    try {
+        const { contacts } = req.body;
+        const newClient  = { contacts };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
@@ -65,5 +80,8 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+//https://www.youtube.com/watch?v=lV7mxivGX_I
+// https://github.com/wambugucoder/MERN-JWT-AND-ROLE-AUTH/blob/master/package.json
+// 
 
 module.exports = router;

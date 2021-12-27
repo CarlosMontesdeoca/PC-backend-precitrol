@@ -1,21 +1,20 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
 const ClientSchema = new Schema({
-    name: { type: String, required: true },
-    email: { type:String, required: true },
-    address: { type: String, required: true },
-    ruc: { type: String, required: true },
-    typ: { type: String, required: true },
-    city: { type: String, required: true },
-    phone: { type: String, required: true },
+    name: { type: String },
+    email: { type:String },
+    address: { type: String },
+    ruc: { type: String },
+    typ: { type: String },
+    plant: { type: String }, 
+    city: { type: String },
+    phone: { type: String },
     contacts: [{
-        _id: { type: String },
-        name_cont: { type: String, required: true },
-        email_cont: { type: String, required: true },
-        phone_cont: { type: String, required: true },
-        rol_cont: { type: String, Required: true }
+        name_cont: { type: String },
+        email_cont: { type: String },
+        phone_cont: { type: String },
+        rol_cont: { type: String }
     }]
 })
 

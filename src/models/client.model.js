@@ -10,12 +10,7 @@ const ClientSchema = new Schema({
     plant: { type: String }, 
     city: { type: String },
     phone: { type: String },
-    contacts: [{
-        name_cont: { type: String },
-        email_cont: { type: String },
-        phone_cont: { type: String },
-        rol_cont: { type: String }
-    }]
+    contacts: []
 })
 
 // clientes es el nombre de la coleccion donde se guardaran los datos

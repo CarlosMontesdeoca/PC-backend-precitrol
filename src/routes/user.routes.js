@@ -1,9 +1,9 @@
 const express = require('express');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const router = express.Router();
 
 const User = require('../models/user.model');
-const BCRYPT_SALT_ROUNDS = 12; 
+// const BCRYPT_SALT_ROUNDS = 12; 
 
 //metodo qe obtiene los datos a traves de http
 router.get('/', async (req, res) => {

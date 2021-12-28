@@ -28,8 +28,8 @@ router.get('/:id', async (req, res) => {
 // metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     try {
-        const { name, email, address, ruc, typ, plant, city, phone } = req.body;
-        const dataClient = new Client({ name, email, address, ruc, typ, plant, city, phone })
+        const { name, email, address, ruc, typ, plant, city, phone, contacts } = req.body;
+        const dataClient = new Client({ name, email, address, ruc, typ, plant, city, phone, contacts })
 
         await dataClient.save();
 

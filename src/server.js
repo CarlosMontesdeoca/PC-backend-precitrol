@@ -20,6 +20,7 @@ app.use(express.json());
 app.use('/api/secret/users', require('./routes/user.routes'));
 app.use('/api/clients', require('./routes/client.routes'));
 app.use('/api/contacts', require('./routes/contact.routes'));
+app.use('/api/dumbbells', require('./routes/dumbb.routes'))
 
 app.use('/token/login', (req, res) => {
     res.send({

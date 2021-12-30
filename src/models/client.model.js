@@ -10,6 +10,7 @@ const ClientSchema = new Schema({
     plant: { type: String }, 
     city: { type: String },
     phone: { type: String },
+    comment: { type: String }, 
     contacts: []
 })
 

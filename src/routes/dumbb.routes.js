@@ -38,11 +38,26 @@ router.post('/', async (req,res) => {
     }
 });
 
-// metodo para editar al cliente
+// // metodo para editar al cliente
+// router.put('/:id', async (req, res) => {
+//     try {
+//         const { _id, mass, density, material, active, state, mark, model} = req.body;
+//         const newDumbb  = { _id, mass, density, material, active, state, mark, model };
+//         //obtengo el id del cliente al que estoy buscando 
+//         console.log(req.params.id); 
+
+//         await Dumbb.findByIdAndUpdate(req.params.id, newDumbb);
+
+//         res.json({ status: 'Item de Calibracion actualizado'});
+//     } catch (error) {
+//         return error
+//     }
+// })
+
+// metodo para eliminar un Item o cambiar de estado a inactivo
 router.put('/:id', async (req, res) => {
     try {
-        const { _id, mass, density, material, active, state, mark, model} = req.body;
-        const newDumbb  = { _id, mass, density, material, active, state, mark, model };
+        const newDumbb  = { active: false };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
@@ -53,15 +68,4 @@ router.put('/:id', async (req, res) => {
         return error
     }
 })
-
-// metodo para eliminar un cliente
-router.delete('/:id', async (req, res) => {
-    try {
-        await Dumbb.findByIdAndDelete(req.params.id);
-        res.json({ status: 'Item de Calibracion eliminado' })
-    } catch (error) {
-        return error
-    }
-})
-
 module.exports = router;

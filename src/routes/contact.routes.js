@@ -27,8 +27,8 @@ router.get('/:id', async (req, res) => {
 // metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     try {
-        const { name, email, phone, business, rol, client } = req.body;
-        const dataContact = new Contact({ name, email, phone, business, rol, client })
+        const { name, email, phone, business, rol, reason } = req.body;
+        const dataContact = new Contact({ name, email, phone, business, rol, reason })
 
         await dataContact.save();
 
@@ -41,8 +41,8 @@ router.post('/', async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', async (req, res) => {
     try {
-        const { name, email, phone, business, rol, client} = req.body;
-        const newContatc  = { name, email, phone, business, rol, client };
+        const { name, email, phone, business, rol, reason } = req.body;
+        const newContatc  = { name, email, phone, business, rol, reason };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 

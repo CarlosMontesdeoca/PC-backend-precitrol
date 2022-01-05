@@ -8,6 +8,7 @@ const ClientSchema = new Schema({
     ruc: { type: String },
     typ: { type: String },
     plant: { type: String }, 
+    industry: { type:String },
     city: { type: String },
     phone: { type: String },
     comment: { type: String }, 

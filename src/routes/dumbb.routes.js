@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// metodo para obtener un solo cliente 
+// metodo para obtener el dato de una pesa
 router.get('/:id', async (req, res) => {
     try {
         const dataDumbb = await Dumbb.findById(req.params.id);

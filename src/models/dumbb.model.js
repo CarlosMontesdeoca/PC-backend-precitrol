@@ -14,5 +14,4 @@ const DumbbSchema = new Schema({
 
 })
 
-// clientes es el nombre de la coleccion donde se guardaran los datos
 module.exports = mongoose.model('pesas', DumbbSchema);

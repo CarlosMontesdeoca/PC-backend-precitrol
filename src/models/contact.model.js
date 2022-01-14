@@ -10,5 +10,4 @@ const ContactSchema = new Schema({
     reason: { type:String }
 })
 
-// clientes es el nombre de la coleccion donde se guardaran los datos
 module.exports = mongoose.model('contactos', ContactSchema);

@@ -9,5 +9,4 @@ const UserSchema = new Schema({
     rol: { type: String, required: true}
 })
 
-// clientes es el nombre de la coleccion donde se guardaran los datos
 module.exports = mongoose.model('usuarios', UserSchema);

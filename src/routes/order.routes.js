@@ -31,7 +31,6 @@ router.put('/:id', async (req, res) => {
 
     const { quest1, commentq1, quest2, commentq2 } = req.body;
     const newOrder  = { quest1, commentq1, quest2, commentq2 };
-    //obtengo el id del cliente al que estoy buscando 
     console.log(req.params.id); 
 
     await Order.findByIdAndUpdate(req.params.id, newOrder);
@@ -40,11 +39,5 @@ router.put('/:id', async (req, res) => {
 
 })
 
-// router.delete('/:id', async (req, res) => {
-
-//     await User.findByIdAndDelete(req.params.id);
-//     res.json({ status: 'usuario eliminado' })
-
-// })
 
 module.exports = router;

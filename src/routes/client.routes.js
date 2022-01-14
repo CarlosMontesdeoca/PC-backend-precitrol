@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 
 const Client = require('../models/client.model');
-// const Contact = require('../models/contact.model');
 
 //metodo qe obtiene los datos a traves de http
 router.get('/', async (req, res) => {
@@ -59,7 +58,6 @@ router.put('/:id/contacts', async (req, res) => {
     try {
         const { contacts } = req.body;
         const newClient  = { contacts };
-        //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
         await Client.findByIdAndUpdate(req.params.id, newClient);
@@ -74,7 +72,6 @@ router.put('/:id/message', async (req, res) => {
     try {
         const { comment } = req.body;
         const newClient  = { comment };
-        //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
         await Client.findByIdAndUpdate(req.params.id, newClient);
@@ -95,8 +92,9 @@ router.delete('/:id', async (req, res) => {
     }
 })
 
+
+module.exports = router;
+
 //https://www.youtube.com/watch?v=lV7mxivGX_I
 // https://github.com/wambugucoder/MERN-JWT-AND-ROLE-AUTH/blob/master/package.json
 // 
-
-module.exports = router;

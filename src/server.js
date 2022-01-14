@@ -29,9 +29,6 @@ app.use('/token/login', (req, res) => {
     });
 });
 
-// static files
-app.use(express.static(path.join(__dirname + '/public')));
-
 // starting the server
 app.listen( app.get('port'), () => {
     console.log(`Server on port ${app.get('port')}`);

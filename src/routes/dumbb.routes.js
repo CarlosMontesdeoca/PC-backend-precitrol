@@ -3,7 +3,6 @@ const router = express.Router();
 
 const Dumbb = require('../models/dumbb.model');
 
-//metodo qe obtiene los datos a traves de http
 router.get('/', async (req, res) => {
     try {
        const dataDumbb = await Dumbb.find();
@@ -14,7 +13,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// metodo para obtener el dato de una pesa
 router.get('/:id', async (req, res) => {
     try {
         const dataDumbb = await Dumbb.findById(req.params.id);
@@ -24,7 +22,6 @@ router.get('/:id', async (req, res) => {
     }
 })
 
-// metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     try {
         const { _id, mass, density, material, state, mark, model } = req.body;
@@ -54,11 +51,9 @@ router.post('/', async (req,res) => {
 //     }
 // })
 
-// metodo para eliminar un Item o cambiar de estado a inactivo
 router.put('/:id', async (req, res) => {
     try {
         const newDumbb  = { active: false };
-        //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
         await Dumbb.findByIdAndUpdate(req.params.id, newDumbb);

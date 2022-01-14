@@ -29,8 +29,8 @@ router.post('/', async (req,res) => {
 
 router.put('/:id', async (req, res) => {
 
-    const { quest1, quest2, commentq1, commentq2, } = req.body;
-    const newOrder  = { quest1, quest2, commentq1, commentq2, };
+    const { quest1, commentq1, quest2, commentq2 } = req.body;
+    const newOrder  = { quest1, commentq1, quest2, commentq2 };
     //obtengo el id del cliente al que estoy buscando 
     console.log(req.params.id); 
 

@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const OrderSchema = new Schema({
     _id: { type:String },
-    date: { type:Date },
+    date: { type:String },
     reazon: { type:String },
     ruc: { type:Number },
     city: { type:String },

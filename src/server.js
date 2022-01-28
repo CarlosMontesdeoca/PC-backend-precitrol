@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 //settings
-app.set( 'port', process.env.PORT || 8080 );
+app.set( 'port', process.env.PORT || 9001 );
 
 //middlewares
 app.use(morgan('dev'));

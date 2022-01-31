@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req,res) => {
 
     const { _id, date, reazon, ruc, city, address, email, phone, contact, Norder, order } = req.body;
-    const dataOrder = new Order({ _id, date, reazon, ruc, city, address, email, phone, contact,Norder, order })
+    const dataOrder = new Order({ _id, date, reazon, ruc, city, address, email, phone, contact,Norder, order, check: 'Pendiente' })
 
     await dataOrder.save();
 
@@ -29,8 +29,8 @@ router.post('/', async (req,res) => {
 
 router.put('/:id', async (req, res) => {
 
-    const { quest1, commentq1, quest2, commentq2 } = req.body;
-    const newOrder  = { quest1, commentq1, quest2, commentq2 };
+    const { quest1, commentq1, quest2, commentq2, check } = req.body;
+    const newOrder  = { quest1, commentq1, quest2, commentq2, check };
     console.log(req.params.id); 
 
     await Order.findByIdAndUpdate(req.params.id, newOrder);

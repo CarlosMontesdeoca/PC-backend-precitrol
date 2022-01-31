@@ -11,6 +11,7 @@ const OrderSchema = new Schema({
     email: { type:String },
     phone: { type:String },
     contact: { type:String },
+    check: { type:String },
     quest1: { type:Boolean },
     quest2: { type:Boolean },
     commentq1: { type:String },

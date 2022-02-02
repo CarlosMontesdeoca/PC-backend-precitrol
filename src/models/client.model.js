@@ -13,6 +13,9 @@ const ClientSchema = new Schema({
     phone: { type: String },
     comment: { type: String }, 
     contacts: []
+}, {
+    timestamps: true,
+    versionKey: false
 })
 
 module.exports = mongoose.model('clientes', ClientSchema);

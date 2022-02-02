@@ -32,7 +32,7 @@ router.post('/', async (req,res) => {
 
         await dataClient.save();
 
-        res.json({status: 'cliente guardado'});
+        res.status(201).json({status: 'cliente guardado'});
     } catch (error) {
         return error
     }

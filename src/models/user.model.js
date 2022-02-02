@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
 });
 
 UserSchema.static.encryptPwd = async (password) => {
-    const salt = await bcrypt.genSalt(5)
+    const salt = await bcrypt.genSalt(10)
     return await bcrypt.hash(password, salt);
 }
 

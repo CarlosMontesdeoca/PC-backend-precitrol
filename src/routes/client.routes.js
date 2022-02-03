@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Client = require('../models/client.model');
+const verifyToken = require('../middlewares');
 
 //metodo qe obtiene los datos a traves de http
 router.get('/', async (req, res) => {

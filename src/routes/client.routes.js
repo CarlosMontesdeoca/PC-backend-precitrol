@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const Client = require('../models/client.model');
-const verifyToken = require('../middlewares');
-
+const { verifyToken, isSistem, isAdmin } = require('../middlewares/authjwt');
+isAdmin
 //metodo qe obtiene los datos a traves de http
-router.get('/', async (req, res) => {
+router.get('/', [verifyToken, isAdmin], async (req, res) => {
     try {
         const dataClients = await Client.find();
         console.log(dataClients);
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 
 // metodo para obtener un solo cliente 
-router.get('/:id', async (req, res) => {
+router.get('/:id', [verifyToken, isAdmin], async (req, res) => {
     try {
         const dataClient = await Client.findById(req.params.id);
         res.json(dataClient);
@@ -26,7 +26,7 @@ router.get('/:id', async (req, res) => {
 })
 
 // metodo que envia datos a traves de http
-router.post('/', async (req,res) => {
+router.post('/', [verifyToken, isAdmin], async (req,res) => {
     try {
         const { name, email, address, ruc, typ, plant, industry, city, phone, contacts } = req.body;
         const dataClient = new Client({ name, email, address, ruc, typ, plant, industry, city, phone, contacts })
@@ -40,7 +40,7 @@ router.post('/', async (req,res) => {
 });
 
 // metodo para editar al cliente
-router.put('/:id', async (req, res) => {
+router.put('/:id', [verifyToken, isAdmin], async (req, res) => {
     try {
         const { name, email, address, ruc, typ, plant, industry, city, phone, contacts } = req.body;
         const newClient  = { name, email, address, ruc, typ, plant, industry, city, phone, contacts };
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.put('/:id/contacts', async (req, res) => {
+router.put('/:id/contacts', [verifyToken, isAdmin], async (req, res) => {
     try {
         const { contacts } = req.body;
         const newClient  = { contacts };
@@ -69,8 +69,8 @@ router.put('/:id/contacts', async (req, res) => {
     }
 })
 
-router.put('/:id/message', async (req, res) => {
-    try {
+router.put('/:id/message', [verifyToken, isAdmin], async (req, res) => {
+    try { 
         const { comment } = req.body;
         const newClient  = { comment };
         console.log(req.params.id); 
@@ -84,7 +84,7 @@ router.put('/:id/message', async (req, res) => {
 })
 
 // metodo para eliminar un cliente
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', [verifyToken, isAdmin], async (req, res) => {
     try {
         await Client.findByIdAndDelete(req.params.id);
         res.json({ status: 'cliente eliminado' })

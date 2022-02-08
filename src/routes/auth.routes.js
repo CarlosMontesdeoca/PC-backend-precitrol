@@ -33,11 +33,11 @@ router.post('/singup', async (req,res) => {
 
 });
 
-router.post('/singin', async (req,res) => {
+router.get('/singin', async (req,res) => {
     
-    const { email, user, password }  = req.body;
+    const { user, password }  = req.body;
     const userFound = await User.findOne({user}).populate("roles")
-
+    console.log(userFound)
     if( !userFound ) return res.status(400).json({message: "User not Found"})
 
     if( password != userFound.password ) return res.status(401).json({token: null, message: 'invalid password'});
@@ -45,7 +45,7 @@ router.post('/singin', async (req,res) => {
     const token = jwt.sign({ id: userFound._id }, 'precitrol-api', {
         expiresIn: 43200
     });
-  
+    
     res.json({ token });
 });
 

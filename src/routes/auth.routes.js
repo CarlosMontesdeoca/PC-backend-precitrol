@@ -33,7 +33,7 @@ router.post('/singup', async (req,res) => {
 
 });
 
-router.get('/singin', async (req,res) => {
+router.post('/singin', async (req,res) => {
     
     const { user, password }  = req.body;
     const userFound = await User.findOne({user}).populate("roles")
@@ -46,7 +46,7 @@ router.get('/singin', async (req,res) => {
         expiresIn: 43200
     });
     
-    res.json({ token });
+    res.send({ token });
 });
 
 module.exports = router;

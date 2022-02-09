@@ -39,7 +39,7 @@ app.use(express.json());
 
 // routes
 app.use('/api/auth', require('./routes/auth.routes'));
-app.use('/api/users', require('./routes/user.routes'));
+app.use('/api/secret/users', require('./routes/user.routes'));
 app.use('/api/clients', require('./routes/client.routes'));
 app.use('/api/contacts', require('./routes/contact.routes'));
 app.use('/api/dumbbells', require('./routes/dumbb.routes'));

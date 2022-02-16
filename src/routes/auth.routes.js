@@ -46,7 +46,7 @@ router.post('/singin', async (req,res) => {
         expiresIn: 43200
     });
     
-    res.send({ token });
+    res.send({ token, userFound });
 });
 
 module.exports = router;

@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req,res) => {
     try {
-        const { name, email, phone, business, rol, reason } = req.body;
-        const dataContact = new Contact({ name, email, phone, business, rol, reason })
+        const { name, appl, email, phone, business, rol, reason } = req.body;
+        const dataContact = new Contact({ name, appl, email, phone, business, rol, reason })
 
         await dataContact.save();
 
@@ -37,8 +37,8 @@ router.post('/', async (req,res) => {
 
 router.put('/:id', async (req, res) => {
     try {
-        const { name, email, phone, business, rol, reason } = req.body;
-        const newContatc  = { name, email, phone, business, rol, reason };
+        const { name, appl, email, phone, business, rol, reason } = req.body;
+        const newContatc  = { name, appl, email, phone, business, rol, reason };
         console.log(req.params.id); 
 
         await Contact.findByIdAndUpdate(req.params.id, newContatc);

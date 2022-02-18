@@ -3,10 +3,11 @@ const { Schema } = mongoose;
 
 const ContactSchema = new Schema({
     name: { type: String, required: true },
-    email: { type: String, required: true },
-    phone: { type: String, required: true },
-    business: {type: String, require: true },
-    rol: { type: String, required: true },
+    appl: { type: String, require: true },
+    email: { type: String },
+    phone: { type: String },
+    business: { type: String },
+    rol: { type: String },
     reason: { type:String }
 })
 

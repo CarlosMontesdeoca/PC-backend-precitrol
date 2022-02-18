@@ -28,8 +28,8 @@ router.get('/:id', [verifyToken, isSistem], async (req, res) => {
 // metodo que envia datos a traves de http
 router.post('/', [verifyToken, isSistem], async (req,res) => {
     try {
-        const { name, email, address, ruc, typ, plant, industry, city, phone, contacts } = req.body;
-        const dataClient = new Client({ name, email, address, ruc, typ, plant, industry, city, phone, contacts })
+        const { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts } = req.body;
+        const dataClient = new Client({ name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts })
 
         await dataClient.save();
 
@@ -42,8 +42,8 @@ router.post('/', [verifyToken, isSistem], async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', [verifyToken, isSistem], async (req, res) => {
     try {
-        const { name, email, address, ruc, typ, plant, industry, city, phone, contacts } = req.body;
-        const newClient  = { name, email, address, ruc, typ, plant, industry, city, phone, contacts };
+        const { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts } = req.body;
+        const newClient  = { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 

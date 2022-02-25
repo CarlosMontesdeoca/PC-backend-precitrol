@@ -13,7 +13,7 @@ const ClientSchema = new Schema({
     industry: { type:String },
     phone: { type: String },
     email: { type: String },
-    comment: [], 
+    comment:{ type: String }, 
     contacts: []
 }, {
     timestamps: true,

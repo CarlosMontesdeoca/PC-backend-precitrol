@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://Precitrol:Sistemas123*@192.168.0.120:27017/blog?ssl=false&authSource=metrologia';
+const URI = 'mongodb://Precitrol:Sistemas123*@192.168.0.120:27017/metrologia?ssl=false&authSource=metrologia';
 
 mongoose.connect(URI, {
   useNewUrlParser: true,

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const URI = 'mongodb://localhost:27017/Metrologia';
+const URI = 'mongodb://Precitrol:Sistemas123*@192.168.0.120:27017/blog?ssl=false&authSource=metrologia';
 
 mongoose.connect(URI, {
   useNewUrlParser: true,

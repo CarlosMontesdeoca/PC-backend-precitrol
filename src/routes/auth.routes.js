@@ -29,7 +29,7 @@ router.post('/singup', async (req,res) => {
         expiresIn : 43200
     })
     
-    res.json({token})
+    res.json({mesage: 'registro exitoso'})
 
 });
 

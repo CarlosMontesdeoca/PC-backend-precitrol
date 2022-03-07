@@ -16,7 +16,8 @@ const createRoles = async () => {
       const values = await Promise.all([
           new Role({ name: "Sistem" }).save(),
           new Role({ name: "Metrologi" }).save(),
-          new Role({ name: "Admin" }).save()
+          new Role({ name: "Admin" }).save(),
+          new Role({ name: "Marketing" }).save()
       ]);
 
       console.log(values);
@@ -45,12 +46,6 @@ app.use('/api/contacts', require('./routes/contact.routes'));
 app.use('/api/dumbbells', require('./routes/dumbb.routes'));
 app.use('/api/orders', require('./routes/order.routes'));
 
-
-app.use('/token/login', (req, res) => {
-    res.send({
-      token: 'test123'
-    });
-});
 
 // starting the server
 app.listen( app.get('port'), () => {

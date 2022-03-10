@@ -4,8 +4,8 @@ const router = express.Router();
 const Client = require('../models/client.model');
 const { verifyToken, isSistem, isAdmin } = require('../middlewares/authjwt');
 isAdmin
-//metodo qe obtiene los datos a traves de http
-router.get('/', [verifyToken, isSistem], async (req, res) => {
+//metodo qe obtiene los datos a traves de http   , [verifyToken, isSistem]
+router.get('/', async (req, res) => {
     try {
         const dataClients = await Client.find();
         console.log(dataClients);
@@ -16,7 +16,7 @@ router.get('/', [verifyToken, isSistem], async (req, res) => {
 });
 
 // metodo para obtener un solo cliente 
-router.get('/:id', [verifyToken, isSistem], async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const dataClient = await Client.findById(req.params.id);
         res.json(dataClient);
@@ -26,10 +26,10 @@ router.get('/:id', [verifyToken, isSistem], async (req, res) => {
 })
 
 // metodo que envia datos a traves de http
-router.post('/', [verifyToken, isSistem], async (req,res) => {
+router.post('/', async (req,res) => {
     try {
-        const { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts } = req.body;
-        const dataClient = new Client({ name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts })
+        const { _id, name, industry } = req.body;
+        const dataClient = new Client({ _id, name, industry })
 
         await dataClient.save();
 
@@ -40,10 +40,10 @@ router.post('/', [verifyToken, isSistem], async (req,res) => {
 });
 
 // metodo para editar al cliente
-router.put('/:id', [verifyToken, isSistem], async (req, res) => {
+router.put('/:id', async (req, res) => {
     try {
-        const { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts } = req.body;
-        const newClient  = { name, ruc, state, address, typ, city, cost, plant, industry, phone, email, contacts };
+        const { _id, name, industry } = req.body;
+        const newClient  = { _id, name, ruc, industry };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 
@@ -55,36 +55,36 @@ router.put('/:id', [verifyToken, isSistem], async (req, res) => {
     }
 })
 
-router.put('/:id/contacts', [verifyToken, isSistem], async (req, res) => {
-    try {
-        const { contacts } = req.body;
-        const newClient  = { contacts };
-        console.log(req.params.id); 
+// router.put('/:id/contacts', [verifyToken, isSistem], async (req, res) => {
+//     try {
+//         const { contacts } = req.body;
+//         const newClient  = { contacts };
+//         console.log(req.params.id); 
 
-        await Client.findByIdAndUpdate(req.params.id, newClient);
+//         await Client.findByIdAndUpdate(req.params.id, newClient);
 
-        res.json({ status: 'contacto agregado'});
-    } catch (error) {
-        return error
-    }
-})
+//         res.json({ status: 'contacto agregado'});
+//     } catch (error) {
+//         return error
+//     }
+// })
 
-router.put('/:id/message', [verifyToken, isSistem], async (req, res) => {
-    try { 
-        const { comment } = req.body;
-        const newClient  = { comment };
-        console.log(req.params.id); 
+// router.put('/:id/message', [verifyToken, isSistem], async (req, res) => {
+//     try { 
+//         const { comment } = req.body;
+//         const newClient  = { comment };
+//         console.log(req.params.id); 
 
-        await Client.findByIdAndUpdate(req.params.id, newClient);
+//         await Client.findByIdAndUpdate(req.params.id, newClient);
 
-        res.json({ status: 'comentario agregado'});
-    } catch (error) {
-        return error
-    }
-})
+//         res.json({ status: 'comentario agregado'});
+//     } catch (error) {
+//         return error
+//     }
+// })
 
 // metodo para eliminar un cliente
-router.delete('/:id', [verifyToken, isSistem], async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         await Client.findByIdAndDelete(req.params.id);
         res.json({ status: 'cliente eliminado' })

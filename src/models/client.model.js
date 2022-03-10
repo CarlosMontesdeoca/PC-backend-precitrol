@@ -2,19 +2,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ClientSchema = new Schema({
+    // _id: { type: String },
     name: { type: String },
-    ruc: { type: String },
-    state: { type: Boolean },
-    city: { type: String }, 
-    cost: { type: String }, 
-    address: { type: String },
-    typ: { type: String },
-    plant: { type: String }, 
     industry: { type:String },
-    phone: { type: String },
-    email: { type: String },
-    comment:{ type: String }, 
-    contacts: []
 }, {
     timestamps: true,
     versionKey: false

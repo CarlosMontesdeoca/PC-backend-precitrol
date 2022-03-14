@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const dataPlant = await Plant.findById(req.params.id);
+    const dataPlant = await Plant.filter(client = req.params.id);
     res.json(dataPlant);
 })
 

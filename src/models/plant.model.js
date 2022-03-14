@@ -12,10 +12,10 @@ const PlantSchema = new Schema({
     // email: { type: String },
     edited: { type: String },
     contacts: [],
-    client: [{
+    client: {
         ref: "clientes",
         type: Schema.Types.ObjectId
-    }]
+    }
 }, {
     timestamps: true,
     versionKey: false

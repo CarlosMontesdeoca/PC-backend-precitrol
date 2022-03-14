@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 const PlantSchema = new Schema({
@@ -7,10 +8,10 @@ const PlantSchema = new Schema({
     address: { type: String },
     typ: { type: String },
     plant: { type: String }, 
-    phone: { type: String },
-    email: { type: String },
+    // phone: { type: String },
+    // email: { type: String },
     edited: { type: String },
-    contacs: [],
+    contacts: [],
     client: [{
         ref: "clientes",
         type: Schema.Types.ObjectId
@@ -18,6 +19,6 @@ const PlantSchema = new Schema({
 }, {
     timestamps: true,
     versionKey: false
-})
+});
 
 module.exports = mongoose.model('sucursales', PlantSchema);

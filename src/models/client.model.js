@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const ClientSchema = new Schema({
-    // _id: { type: String },
+    ruc: { type: String, unique: true },
     name: { type: String },
     industry: { type:String },
 }, {

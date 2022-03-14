@@ -7,7 +7,7 @@ const Client = require('../models/client.model');
 
 router.get('/', async (req, res) => {
     
-    const dataPlant = await Plant.find();
+    const dataPlant = await Plant.find().populate("clientes");
     console.log(dataPlant);
     res.json(dataPlant);
 
@@ -20,9 +20,9 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req,res) => {
 
-    const { city, cost, address, typ, plant, phone, email, edited, contacs, client } = req.body;
+    const { city, cost, address, typ, plant, edited, contacts, client } = req.body;
 
-    const NewPlant = new Plant ({ city, cost, address, typ, plant, phone, email, edited, contacs, client })
+    const NewPlant = new Plant ({ city, cost, address, typ, plant, edited, contacts, client })
 
     if( client ){
         const foundClient = await Client.findOne({name:  {$in: client}})
@@ -35,19 +35,33 @@ router.post('/', async (req,res) => {
     const savedClient = await NewPlant.save();
     console.log(savedClient)
 
-    res.json({status: 'cliente ingresado'});
+    res.json({status: 'planta ingresada'});
 });
 
 router.put('/:id', async (req, res) => {
 
-    const { name, email, user, password, rol } = req.body;
-    const newPlant  = { name, email, user, password, rol };
+    const { city, cost, address, typ, plant, edited } = req.body;
+    const newPlant  = { city, cost, address, typ, plant, edited };
     console.log(req.params.id); 
 
     await Plant.findByIdAndUpdate(req.params.id, newPlant);
 
-    res.json({ status: 'cliente actualizado'});
+    res.json({ status: 'planta actualizada'});
 
+})
+
+router.put('/:id/contacts', async (req, res) => {
+    try {
+        const { contacts } = req.body;
+        const newClient  = { contacts };
+        console.log(req.params.id); 
+
+        await Client.findByIdAndUpdate(req.params.id, newClient);
+
+        res.json({ status: 'contacto agregado'});
+    } catch (error) {
+        return error
+    }
 })
 
 router.delete('/:id', async (req, res) => {

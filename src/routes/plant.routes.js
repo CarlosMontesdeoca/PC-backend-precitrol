@@ -3,8 +3,8 @@ const router = express.Router();
 
 const Plant = require('../models/plant.model');
 const Client = require('../models/client.model');
-// const { verifyToken, isSistem } = require('../middlewares/authjwt');
-
+// const { verifyToken, isSistem } = require('../middlewares/authjwt');  data.client === req.params.id
+ 
 router.get('/', async (req, res) => {
     
     const dataPlant = await Plant.find().populate("clientes");
@@ -14,7 +14,10 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const dataPlant = await Plant.filter(client = req.params.id);
+    const Plants = await Plant.find().populate("clientes");
+    let dataPlant = Plants.filter(data => data.client == req.params.id)
+        // console.log(data.client)
+        console.log(dataPlant)
     res.json(dataPlant);
 })
 

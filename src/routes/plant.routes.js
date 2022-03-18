@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-    const Plants = await Plant.find().populate("clientes");
+    const Plants = await Plant.find();
     let dataPlant = Plants.filter(data => data.client == req.params.id)
         // console.log(data.client)
         console.log(dataPlant)
@@ -59,7 +59,7 @@ router.put('/:id/contacts', async (req, res) => {
         const newClient  = { contacts };
         console.log(req.params.id); 
 
-        await Client.findByIdAndUpdate(req.params.id, newClient);
+        await Plant.findByIdAndUpdate(req.params.id, newClient);
 
         res.json({ status: 'contacto agregado'});
     } catch (error) {

@@ -23,9 +23,9 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req,res) => {
 
-    const { city, cost, address, typ, plant, edited, contacts, client } = req.body;
+    const { city, cost, address, typ, plant, phone, email, edited, contacts, client } = req.body;
 
-    const NewPlant = new Plant ({ city, cost, address, typ, plant, edited, contacts, client })
+    const NewPlant = new Plant ({ city, cost, address, typ, plant, phone, email, edited, contacts, client })
 
     if( client ){
         const foundClient = await Client.findOne({name:  {$in: client}})

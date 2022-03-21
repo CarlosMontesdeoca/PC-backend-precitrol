@@ -8,8 +8,8 @@ const PlantSchema = new Schema({
     address: { type: String },
     typ: { type: String },
     plant: { type: String }, 
-    // phone: { type: String },
-    // email: { type: String },
+    phone: { type: String },
+    email: { type: String },
     edited: { type: String },
     contacts: [],
     client: {

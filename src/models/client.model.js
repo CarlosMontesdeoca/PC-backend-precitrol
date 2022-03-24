@@ -5,14 +5,7 @@ const ClientSchema = new Schema({
     ruc: { type: String, unique: true },
     name: { type: String },
     industry: { type:String },
-    // city: { type: String }, 
-    // cost: { type: String }, 
-    // address: { type: String },
-    // typ: { type: String },
-    // plant: { type: String }, 
-    // phone: { type: String },
-    // email: { type: String },
-    // edited: { type: String },
+    typ: { type: String },
 }, {
     timestamps: true,
     versionKey: false

@@ -16,20 +16,28 @@ router.get('/', async (req, res) => {
 });
 
 // metodo para obtener un solo cliente 
-router.get('/:id', async (req, res) => {
-    try {
-        const dataClient = await Client.findById(req.params.id);
-        res.json(dataClient);
-    } catch (error) {
-        return error
-    }
+// router.get('/:id', async (req, res) => {
+//     const Plants = await Plant.find();
+//     let dataPlant = Plants.filter(data => data.client == req.params.id)
+//         // console.log(data.client)
+//         console.log(dataPlant)
+//     res.json(dataPlant);
+// })
+router.get('/:ruc', async (req, res) => {
+    // try {
+    const dataClients = await Client.find();
+    const dataClient = await dataClients.filter(data => data.ruc == req.params.ruc);
+    res.json(dataClient);
+    // } catch (error) {
+        // return error
+    // }
 })
 
 // metodo que envia datos a traves de http
 router.post('/', async (req,res) => {
     try {
-        const { ruc, name, industry } = req.body;
-        const dataClient = new Client({ ruc, name, industry })
+        const { ruc, name, industry, typ  } = req.body;
+        const dataClient = new Client({ ruc, name, industry, typ  })
 
         await dataClient.save();
 
@@ -42,8 +50,8 @@ router.post('/', async (req,res) => {
 // metodo para editar al cliente
 router.put('/:id', async (req, res) => {
     try {
-        const { ruc, name, industry } = req.body;
-        const newClient  = { ruc, name, industry };
+        const { ruc, name, industry, typ } = req.body;
+        const newClient  = { ruc, name, industry, typ };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 

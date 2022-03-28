@@ -37,7 +37,7 @@ router.get('/:ruc', async (req, res) => {
 router.post('/', async (req,res) => {
     try {
         const { ruc, name, industry, typ  } = req.body;
-        const dataClient = new Client({ ruc, name, industry, typ  })
+        const dataClient = new Client({ ruc, name: name.toUpperCase(), industry, typ  })
 
         await dataClient.save();
 
@@ -51,7 +51,7 @@ router.post('/', async (req,res) => {
 router.put('/:id', async (req, res) => {
     try {
         const { ruc, name, industry, typ } = req.body;
-        const newClient  = { ruc, name, industry, typ };
+        const newClient  = { ruc, name: name.toUpperCase(), industry, typ };
         //obtengo el id del cliente al que estoy buscando 
         console.log(req.params.id); 
 

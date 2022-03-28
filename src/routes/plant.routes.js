@@ -25,10 +25,10 @@ router.post('/', async (req,res) => {
 
     const { city, cost, address, typ, plant, phone, email, edited, contacts, client } = req.body;
 
-    const NewPlant = new Plant ({ city, cost, address, typ, plant, phone, email, edited, contacts, client })
+    const NewPlant = new Plant ({ city: city.toUpperCase(), cost, address: address.toUpperCase(), typ, plant: plant.toUpperCase(), phone, email: email.toLowerCase(), edited, contacts, client: client.toUpperCase() })
 
     if( client ){
-        const foundClient = await Client.findOne({name:  {$in: client}})
+        const foundClient = await Client.findOne({name:  {$in: client.toUpperCase()}})
         NewPlant.client = foundClient._id
     } else {
         console.log(false)

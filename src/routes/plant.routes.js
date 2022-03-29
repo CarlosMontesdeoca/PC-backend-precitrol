@@ -24,8 +24,10 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req,res) => {
 
     const { city, cost, address, typ, plant, phone, email, edited, contacts, client } = req.body;
+    // let aux = ''
+    // if ( req.body.email ) { aux = req.body.email.toLowerCase() }
 
-    const NewPlant = new Plant ({ city: city.toUpperCase(), cost, address: address.toUpperCase(), typ, plant: plant.toUpperCase(), phone, email: email.toLowerCase(), edited, contacts, client: client.toUpperCase() })
+    const NewPlant = new Plant ({ city: city.toUpperCase(), cost, address: address.toUpperCase(), typ, plant, phone, email, edited, contacts, client: client.toUpperCase() })
 
     if( client ){
         const foundClient = await Client.findOne({name:  {$in: client.toUpperCase()}})

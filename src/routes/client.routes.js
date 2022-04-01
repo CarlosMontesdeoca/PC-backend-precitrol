@@ -63,19 +63,19 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-// router.put('/:id/contacts', [verifyToken, isSistem], async (req, res) => {
-//     try {
-//         const { contacts } = req.body;
-//         const newClient  = { contacts };
-//         console.log(req.params.id); 
+router.put('/:id/contacts', [verifyToken, isSistem], async (req, res) => {
+    try {
+        const { contacts } = req.body;
+        const newClient  = { contacts };
+        console.log(req.params.id); 
 
-//         await Client.findByIdAndUpdate(req.params.id, newClient);
+        await Client.findByIdAndUpdate(req.params.id, newClient);
 
-//         res.json({ status: 'contacto agregado'});
-//     } catch (error) {
-//         return error
-//     }
-// })
+        res.json({ status: 'contacto agregado'});
+    } catch (error) {
+        return error
+    }
+})
 
 // router.put('/:id/message', [verifyToken, isSistem], async (req, res) => {
 //     try { 

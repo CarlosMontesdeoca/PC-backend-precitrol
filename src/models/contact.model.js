@@ -10,7 +10,8 @@ const ContactSchema = new Schema({
     phone: { type: String },
     business: { type: String },
     rol: { type: String },
-    reason: { type:String }
+    reason: { type:String },
+    state: { type:String }
 })
 
 module.exports = mongoose.model('contactos', ContactSchema);
